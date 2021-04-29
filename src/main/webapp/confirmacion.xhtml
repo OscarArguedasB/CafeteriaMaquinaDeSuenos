@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:body>
+        <ui:composition>
+            <ui:define name="Registo Confirmado">
+                <b:container fluid="true">
+                    <b:panel title="Registro Creado satisfactoriamente" look="success">
+                        <b:row>
+                            <b:column medium-screen="3">
+                                <h:outputLabel value="Usuario registrado con exito"/>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:commandButton value="Continuar"
+                                         look="primary"
+                                         style="width: 100%"
+                                         action="#{request.contextPath}/faces/index.xhtml"/>
+                        </b:row>
+                    </b:panel>
+                </b:container>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>

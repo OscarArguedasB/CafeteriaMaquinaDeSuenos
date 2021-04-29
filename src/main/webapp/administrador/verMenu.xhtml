@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+        <h:head>
+            <tittle>Lista de solicitudes</tittle>
+        </h:head>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Menu" look="danger" collapsible="false" style="position: absolute">
+                            <b:commandButton value="Agregar" look="primary" action="editaMenu2.xhtml"/>
+                            <b:dataTable value="#{menuController.menus}" style="position: relative"
+                                         var="menu"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="ture"
+                                         copy="true"
+                                         print="true">
+                                <b:dataTableColumn value="#{menu.idMenu}"
+                                                   label="Codigo"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{menu.tipo}"
+                                                   label="Tipo"
+                                                   width="10%"/>
+                                <b:dataTableColumn value="#{menu.nombre}"
+                                                   label="Nombre"
+                                                   width="10%"/>
+                                <b:dataTableColumn value="#{menu.precio}"
+                                                   label="Precio"
+                                                   width="12%"/>                             
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Accion"
+                                                   width="10%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{menuController.edita(menu.idMenu)}"
+                                                     />
+                                </b:dataTableColumn>                         
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

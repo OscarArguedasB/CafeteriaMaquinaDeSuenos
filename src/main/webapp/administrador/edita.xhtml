@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui" 
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title> EditarSolicitudes</title>    
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form id="editaSolicitudesForm">
+                    <b:container fluid="true">
+                        <b:panel title="Personal" look="danger" style="position: absolute">
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="idPersonal" for="idPersonal"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="402560763"
+                                                 required="true"
+                                                 id="idPersonal"
+                                                 value="#{personalController.idPersonal}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idPersonal"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre" for="nombre"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="DENNIS"
+                                                 required="true"
+                                                 id="nombre"
+                                                 value="#{personalController.nombre}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="nombre"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Genero" for="genero"/>
+                                </b:column>
+                                <b:column medium-screen="4">
+                                    <b:panelGrid columns="2">
+                                        <b:radiobutton value="#{personalController.genero}"
+                                                       itemLabel="Masculino" itemValue="M"/>
+                                        <b:radiobutton value="#{personalController.genero}"
+                                                       itemLabel="Femenino" itemValue="F"/>
+                                    </b:panelGrid>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="genero"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Fecha de Nacimiento" for="fechaNaci"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:datepicker required="true"                                                 
+                                                  id="fechaNaci"
+                                                  value="#{personalController.fechaNaci}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaNaci"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Fecha de Ingr" for="fechaIngr"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:datepicker required="true"                                                 
+                                                  id="fechaIngr"
+                                                  value="#{personalController.fechaIngr}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="fechaIngr"/>
+                                </b:column>
+                            </b:row>
+                           <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Telefono" for="telefono"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="87489653"
+                                                 required="true"
+                                                 id="telefono"
+                                                 value="#{personalController.telefono}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="telefono"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Salario" for="salario"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="500000"
+                                                 required="true"
+                                                 id="salario"
+                                                 value="#{personalController.salario}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="salario"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Codigo del restaurante" for="idRestaurante"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="1"
+                                                 required="true"
+                                                 id="idRestaurante"
+                                                 value="#{personalController.idRestaurante}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idRestaurante"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="3">
+                                    <p:captcha label="Check"/>
+                                </b:column>
+                                <b:column medium-screen="2"/>
+                                    <b:commandButton value="Agregar"
+                                                     look="primary"
+                                                     action="#{personalController.insertar()}"
+                                                     style="width: 40%"
+                                                     >
+                                    </b:commandButton>                            
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

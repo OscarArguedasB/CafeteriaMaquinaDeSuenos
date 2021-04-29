@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <body>
+        <h:head>
+            <tittle>Lista de solicitudes</tittle>
+        </h:head>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <b:container fluid="true">
+                        <b:panel title="Lista de Personal" look="danger" collapsible="false" style="position: absolute">
+                            <b:commandButton value="Agregar personal" action="edita.xhtml"/>
+                            <b:dataTable value="#{personalController.personales}" style="position: relative"
+                                         var="personal"
+                                         excel="true"
+                                         csv="true"
+                                         pdf="true"
+                                         columnVisibility="ture"
+                                         copy="true"
+                                         print="true">
+                                <b:dataTableColumn value="#{personal.idPersonal}"
+                                                   label="Cedula"
+                                                   width="8%"/>
+                                <b:dataTableColumn value="#{personal.nombre}"
+                                                   label="Nombre"
+                                                   width="10%"/>
+                                <b:dataTableColumn value="#{personal.genero}"
+                                                   label="Genero"
+                                                   width="10%"/>
+                                <b:dataTableColumn value="#{personal.fechaNaci}"
+                                                   label="F. Nacimiento"
+                                                   width="12%"/>
+                                <b:dataTableColumn value="#{personal.fechaIngr}"
+                                                   label="F. Ingreso"
+                                                   width="12%"/>
+                                <b:dataTableColumn value="#{personal.telefono}"
+                                                   label="Telefono"
+                                                   width="10%"/>
+                                <b:dataTableColumn value="#{personal.salario}"
+                                                   label="Salario"
+                                                   width="12%"/>   
+                                <b:dataTableColumn value="#{personal.idRestaurante}"
+                                                   label="Restaurante"
+                                                   width="12%"/> 
+                                <b:dataTableColumn style="text-align: center"
+                                                   label="Accion"
+                                                   width="10%">
+                                    <b:commandButton value="Editar"
+                                                     action="#{personalController.edita(personal.idPersonal)}"
+                                                     />
+                                </b:dataTableColumn>                         
+                            </b:dataTable>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

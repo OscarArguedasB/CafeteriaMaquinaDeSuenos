@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      >
+
+    <h:head>
+        <title> EditarSolicitudes</title>    
+    </h:head>
+    <h:body>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+            <ui:define name="content">
+                <h:form id="editaMenuForm">
+                    <b:container fluid="false" style="position: absolute">
+                        <b:panel title="Menu" look="danger">
+                             <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Codigo" for="idMenu"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="123134"
+                                                 required="true"
+                                                 id="idMenu"
+                                                 value="#{menuController.idMenu}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idMenu"/>
+                                </b:column>
+                            </b:row>
+                             <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Tipo" for="tipo"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="Cafe"
+                                                 required="true"
+                                                 id="tipo"
+                                                 value="#{menuController.tipo}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="tipo"/>
+                                </b:column>
+                            </b:row>
+                             <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Nombre" for="nombre"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="Mocca"
+                                                 required="true"
+                                                 id="nombre"
+                                                 value="#{menuController.nombre}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="menu"/>
+                                </b:column>
+                            </b:row>
+                             <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Precio" for="precio"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="123134"
+                                                 required="true"
+                                                 id="precio"
+                                                 value="#{menuController.precio}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="precio"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2">
+                                    <h:outputLabel value="Codigo del restaurante" for="idRestaurante"/>
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="1"
+                                                 required="true"
+                                                 id="idRestaurante"
+                                                 value="#{personalController.idRestaurante}"/>
+                                </b:column>
+                                <b:column medium-screen="6" style-class="message">
+                                    <b:message for="idRestaurante"/>
+                                </b:column>
+                            </b:row>
+                            <b:row>
+                                <b:column medium-screen="2"/>
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Modificar"
+                                                     look="primary"
+                                                     action="#{menuController.modificar()}"
+                                                     style="width: 33%"
+                                                     >
+                                    </b:commandButton>
+                                    <b:commandButton value="Eliminar"
+                                                     look="danger"
+                                                     action="#{menuController.eliminar()}"
+                                                     style="width: 33%"
+                                                     >
+                                    </b:commandButton>
+                                </b:column>                                
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

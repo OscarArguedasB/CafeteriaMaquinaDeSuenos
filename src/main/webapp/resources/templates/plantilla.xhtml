@@ -1,0 +1,333 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <script src="https://kit.fontawesome.com/b3db4dea6d.js" crossorigin="anonymous"></script>
+        <style>
+
+            /*            body{
+                            background-image: url("fondo.png");
+                        }*/
+            .centrado{
+                position:absolute;
+                top:15% ;
+                left:30% ;
+                width:400px;
+                height:300px;
+                margin-left: 200px;
+                margin-top: 150px;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="default.css" />
+        <h:outputStylesheet library="css" name="cssLayout.css" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+        <title>Maquina de sueños</title>
+    </h:head>
+
+    <h:body>
+
+        <script>
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "275px";
+            }
+
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+            }
+        </script>
+
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" style="color: white" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <a href="#{request.contextPath}/faces/principal.xhtml" class="w3-button w3-black">Inicio</a>
+            <a onclick="document.getElementById('menu').style.display = 'block'" class="w3-button w3-black">Nuestro Menu</a>
+            <a onclick="document.getElementById('contactenos').style.display = 'block'" class="w3-button w3-black">Contactenos</a>
+
+            <b:navbarLinks rendered="#{usuarioController.idRol=='admin'}">
+                <b:dropMenu value="Administrador" icon-awesome="profile" style="    color: #fff!important;
+                            background-color: #000!important; text-align: center; display: block;">
+                    <b:navLink value="Modificar personal" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/administrador/verPersonal.xhtml"/>
+                    <b:navLink value="Modificar menu" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/administrador/verMenu.xhtml"/>
+                    <b:navLink value="Reporte" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/reportes/reporte.xhtml"/>
+                </b:dropMenu>
+                <b:dropMenu value="Cliente" icon-awesome="profile" style="    color: #fff!important;
+                            background-color: #000!important; text-align: center; display: block;">
+                    <b:navLink value="Modificar Usuario" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/administrador/usuario.xhtml" />
+                </b:dropMenu>
+            </b:navbarLinks>
+            <b:navbarLinks rendered="#{usuarioController.idRol=='admin'}">
+                <b:dropMenu value='Dashboard'  icon-awesome='gamepad' iconAlign="right" style="color: #fff!important;
+                            background-color: #000!important; text-align: center; display: block;">                                                                                           
+                    <b:navLink value="Zoom"  href="#{request.contextPath}/faces/dashboard/grafico12.xhtml"/>                             
+                </b:dropMenu>
+            </b:navbarLinks>
+            <b:navbarLinks rendered="#{usuarioController.idRol=='respaldo'}">
+                <b:dropMenu value="Respaldo" icon-awesome="profile" style="   color: #fff!important;
+                            background-color: #000!important; text-align: center; display: block;">
+                    <b:navLink value="Respaldar datos" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/respaldo/respaldo.xhtml"/>                    
+                </b:dropMenu>
+            </b:navbarLinks>
+            <b:navbarLinks rendered="#{usuarioController.idRol=='personal'}">
+                <b:dropMenu value="Personal" icon-awesome="profile" style="    color: #fff!important;
+                            background-color: #000!important; text-align: center; display: block;" >
+                    <b:navLink style="display: " value="Editar datos" icon-awesome="" href=""/>
+                </b:dropMenu>
+            </b:navbarLinks>
+        </div>
+
+        <div id="top" class="top">
+            <ui:insert name="top">
+                <b:navBar class="nav" fluid="true">
+                    <b:navbarLinks pull="left">
+                        <span style="font-size:50px;cursor:pointer;color: black" onclick="openNav()">&#9776;</span>
+                        <a href="#{request.contextPath}/faces/principal.xhtml" style="position: absolute;left: 45%; top: 2%">
+                            <b:image library="images" name="logo..color.png" style="height: 85px;position: relative;left: 49%"></b:image>
+                        </a>
+                    </b:navbarLinks>
+
+                    <b:navbarLinks pull="right">
+                        <b:dropMenu value="Perfil" icon-awesome="profile" style="font-size: 30px">
+                            <b:navLink value="Cerrar Sesion" icon-awesome="salir" href="#{request.contextPath}/faces/index.xhtml"/>
+                        </b:dropMenu>
+                    </b:navbarLinks>
+                </b:navBar>
+            </ui:insert>
+        </div>
+        <div id="left">
+            <ui:insert name="left">
+                <b:image library="images" name="left.jpg" style="height: 699px; margin-left: 0px;" />
+            </ui:insert>
+        </div>
+
+        <div id="content" class="left_content">
+            <ui:insert name="content">
+                <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCafeteriaMaquinaDeSuenos%2F;tabs=timeline;width=340;height=500;small_header=false;adapt_container_width=true;hide_cover=false;show_facepile=true;appId" width="600" height="500" style="border:none;overflow:hidden;position: absolute;left: 30%" scrolling="yes" frameborder="1" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d694.5810011888319!2d-84.11955953998819!3d10.0050042545715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb8c2d4cef01%3A0x963a6a951e6a7cc6!2zQ2FmZXRlcsOtYSBNw6FxdWluYSBkZSBzdWXDsW9z!5e0!3m2!1sen!2scr!4v1619064810352!5m2!1sen!2scr"
+                        width="600" height="500" style="border:0;position: absolute; right: 2%" allowfullscreen="true" loading="lazy"></iframe>
+            </ui:insert>
+        </div>
+
+        <!-- Contactenos -->
+        <div id="contactenos" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+                <div class="w3-container w3-black">
+                    <span onclick="document.getElementById('contactenos').style.display =
+                                    'none'" class="w3-button w3-display-topright w3-large">&times;</span>
+                    <h1>Contactenos</h1>
+                </div>
+                <div class="w3-container">
+                    <h2>Telefono: 8889-5595</h2>
+                    <a href="https://api.whatsapp.com/send?phone=50688895595;fbclid=IwAR06xfB_vLgsM5c09vN-oafDMr63UHFP64xqvvLalZJuj4wJVP_1f9Tyy5I">
+                        <img height="90px" width="90px" src="4-2-whatsapp-transparent.png"></img>
+                    </a>
+                    <a href="https://api.whatsapp.com/send?phone=50688895595;fbclid=IwAR06xfB_vLgsM5c09vN-oafDMr63UHFP64xqvvLalZJuj4wJVP_1f9Tyy5I">WhatsApp</a>
+                    <p>-</p>
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCafeteriaMaquinaDeSuenos%2F;tabs=timeline;width=340;height=500;small_header=false;adapt_container_width=true;hide_cover=false;show_facepile=true;appId"
+                            width="340" height="500" style="border:none;overflow:hidden;position: absolute;left: 2%" scrolling="yes" frameborder="1" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d694.5810011888319!2d-84.11955953998819!3d10.0050042545715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb8c2d4cef01%3A0x963a6a951e6a7cc6!2zQ2FmZXRlcsOtYSBNw6FxdWluYSBkZSBzdWXDsW9z!5e0!3m2!1sen!2scr!4v1619064810352!5m2!1sen!2scr"
+                            width="400" height="500" style="border:0;position: absolute; right: 2%" allowfullscreen="true" loading="lazy"></iframe>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu (ADD LISTA) -->
+        <div id="menu" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+                <div class="w3-container w3-black w3-display-container">
+                    <span onclick="document.getElementById('menu').style.display =
+                                    'none'" class="w3-button w3-display-topright w3-large">&times;</span>
+                    <h1>Menu</h1>
+                </div>
+                <div class="w3-container w3-black w3-display-container">
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Mientras Tanto" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.mientrasTanto}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px"
+                                     >
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="70%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="30%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Especiales" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.especiales}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Pastas" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.pastas}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Paninis" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.paninis}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Hamburguesas" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.hamburguesas}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Crepas" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.crepas}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Bebidas Calientes" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.bebidasCalientes}"
+                                     var="menu"
+                                     columnVisibility="false"
+                                     searching="false"
+                                     column-visibility="false"
+                                     paginated="false"
+                                     info="false"
+                                     responsive="true"
+                                     fixedHeader="true"
+                                     scroll-size="400px">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Bebidas Frias" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.bebidasFrias}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

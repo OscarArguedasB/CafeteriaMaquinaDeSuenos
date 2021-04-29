@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+
+            <ui:define name="content">
+                <h:form id="buscarUsuarioForm">
+                    <b:container fluid="true" >
+                        <b:panel look="primary" title="Usuario">
+                            <b:row>
+                                <b:column medium-screen="1">
+                                    <h:outputLabel value="Codigo del usuario" for="id"/>                                    
+                                </b:column>
+                                <b:column medium-screen="2">
+                                    <b:inputText placeholder="7"
+                                                 required="true"
+                                                 id="id"
+                                                 value="#{usuarioController.id}"/>
+                                </b:column>
+                                <b:column medium-screen="1" >
+                                    <b:commandButton value="Buscar"
+                                                     icon="search"
+                                                     look="success"
+                                                     onclick="ajax:usuarioController.buscarUsuario(usuarioController.id)" 
+                                                     update="@form" />                            
+                                </b:column>
+                                <b:column medium-screen="2" style-class="message">
+                                    <b:message for="id"/>                                    
+                                </b:column>
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+
+                    <b:container fluid="true">
+                        <b:panelGrid colSpans="6,6" size="sm">
+                            <b:panel title="Datos" look="primary">
+
+                                <b:row>
+                                    <b:column medium-screen="3">
+                                        <h:outputText value="Nombre del usuario"/>
+                                    </b:column>
+                                    <b:column medium-screen="4">
+                                        <b:inputText placeholder="andres"
+                                                     id="idUsuario"
+                                                     disabled="true"
+                                                     value="#{usuarioController.idUsuario}"/>
+                                    </b:column>
+                                    <b:column small-screen="3">
+                                        <b:commandButton value="Modificar datos"
+                                                         icon="pi pi-check"
+                                                         look="success"
+                                                         action="#{usuarioController.modificar()}" 
+                                                         />   
+                                    </b:column>
+                                </b:row>
+
+
+                                <b:row>
+                                    <b:column medium-screen="3">
+                                        <h:outputText value="nombre Completo"/>
+                                    </b:column>
+                                    <b:column medium-screen="4">
+                                        <b:inputText placeholder="Oscar Arguedas"
+                                                     id="nombreUsuario"
+                                                     disabled="true"
+                                                     value="#{usuarioController.nombreUsuario}"/>
+                                    </b:column>                                   
+                                </b:row>
+
+                                <b:row>
+                                    <b:column medium-screen="3">
+                                        <h:outputText value="Rol"/>
+                                    </b:column>
+                                    <b:column medium-screen="4">
+                                        <b:inputText placeholder="cleinte"
+                                                     id="idRol"
+                                                     value="#{usuarioController.idRol}"/>
+                                    </b:column>                                   
+                                </b:row>
+
+                                <b:row>
+                                    <b:column medium-screen="3">
+                                        <h:outputText value="Codigo del restaurante"/>
+                                    </b:column>
+                                    <b:column medium-screen="4">
+                                        <b:inputText placeholder="1"
+                                                     id="idRestaurante"
+                                                     disabled="true"
+                                                     value="#{usuarioController.idRestaurante}"/>
+                                    </b:column>                                   
+                                </b:row>
+                            </b:panel>                      
+                        </b:panelGrid>
+                    </b:container>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>
+            Respaldo 
+        </title>    
+    </h:head> 
+    <h:body>
+        <ui:composition template="./../resources/templates/plantilla.xhtml">
+            <ui:define name="content">
+                <b:form>
+                    <b:container fluid="true">
+                        <b:panel title="Generar Respaldos" look="success">
+                            <b:row>
+                                <b:column medium-screen="3">
+                                    <b:commandButton value="Respaldar" action="#{respaldoController.respaldo()}"/>
+                                </b:column>
+
+                            </b:row>
+                        </b:panel>
+                    </b:container>
+                </b:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

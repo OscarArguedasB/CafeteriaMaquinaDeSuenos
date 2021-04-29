@@ -1,0 +1,389 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <style>
+        body,h1,h5 {font-family: "Raleway", sans-serif}
+        body, html {height: 100%}
+        .bgimg {
+            background-image: url('home.jpg');
+            min-height: 100%;
+            background-position: center;
+            background-size: cover;
+        }
+    </style>
+    <h:head>
+        <title>Maquina de sueños</title>
+        <script src="https://kit.fontawesome.com/b3db4dea6d.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script language="JavaScript">
+
+
+            function new_clock() {
+
+                clock = new Date();
+                hour = clock.getHours();
+                minutes = clock.getMinutes();
+                seconds = clock.getSeconds();
+
+                print_clock = hour + ":" + minutes + ":" + seconds;
+
+                document.form_reloj.reloj.value = print_clock;
+                setTimeout(new_clock, 1000);
+            }
+
+        </script> 
+
+        <style>
+            .centrado{
+                position:absolute;
+                top:15% ;
+                left:30% ;
+                width:400px;
+                height:300px;
+                margin-left: 200px;
+                margin-top: 150px;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"/>
+        <title>Maquina de sueños</title>
+    </h:head>
+    <h:body onload="new_clock()">
+
+        <div class="bgimg w3-display-container w3-text-white">
+            <!--            Para posible utilizacion luego-->
+            <!--            <div class="w3-display-middle w3-jumbo">
+                            <b:image library="images" name="logo..color.png" style="height: 250px;"/>
+                        </div>-->
+            <div class="w3-display-topleft w3-container w3-xlarge">
+                <p><button onclick="document.getElementById('menu').style.display =
+                                'block'" class="w3-button w3-black">Menu</button></p>
+                <p><button onclick="document.getElementById('contactenos').style.display =
+                                'block'" class="w3-button w3-black">Contactenos</button></p>
+                <p><button onclick="document.getElementById('iniciarsesion').style.display =
+                                'block'" class="w3-button w3-black">Iniciar Sesion</button></p>
+                <p><button onclick="document.getElementById('register').style.display =
+                                'block'" class="w3-button w3-black">Registrarse</button></p>
+            </div>
+            <div class="w3-display-bottomleft w3-container">
+                <form name="form_reloj" class="w3-large">
+                    <input class="w3-xlarge" style="background: transparent; 
+                           border: none; outline: none; cursor: default" type="text" name="reloj" size="14"/>
+                </form>
+                <p class="w3-large">Street 8, Avenue 11, Heredia Province, Heredia</p>
+                <p>powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+            </div>
+        </div>
+
+        <!-- Menu (ADD LISTA) -->
+        <div id="menu" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+                <div class="w3-container w3-black w3-display-container">
+                    <span onclick="document.getElementById('menu').style.display =
+                                    'none'" class="w3-button w3-display-topright w3-large">&times;</span>
+                    <h1>Menu</h1>
+                </div>
+                <div class="w3-container w3-black w3-display-container">
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Mientras Tanto" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.mientrasTanto}"
+                                     var="menu"
+                                     columnVisibility="true"
+                                     >
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Especiales" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.especiales}"
+                                     var="menu"
+                                     columnVisibility="true"
+                                     searching="Especiales">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Pastas" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.pastas}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Paninis" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.paninis}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Hamburguesas" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.hamburguesas}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Crepas" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.crepas}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Bebidas Calientes" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.bebidasCalientes}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+                <div class="w3-container">
+                    <b:panel title="Bebidas Frias" look="success" collapsible="true" collapsed="true">
+                        <b:dataTable value="#{menuController.bebidasFrias}"
+                                     var="menu"
+                                     columnVisibility="true">
+                            <b:dataTableColumn value="#{menu.nombre}" 
+                                               label="Platillo"
+                                               width="30%"
+                                               />
+                            <b:dataTableColumn value="#{menu.precio}" 
+                                               label="Precio"
+                                               width="15%"
+                                               />
+                        </b:dataTable>
+                    </b:panel>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contactenos -->
+        <div id="contactenos" class="w3-modal">
+            <div class="w3-modal-content w3-animate-zoom">
+                <div class="w3-container w3-black">
+                    <span onclick="document.getElementById('contactenos').style.display =
+                                    'none'" class="w3-button w3-display-topright w3-large">&times;</span>
+                    <h1>Contactenos</h1>
+                </div>
+                <div class="w3-container">
+                    <div class="w3-container">
+                        <h2>Telefono: 8889-5595</h2>
+                        <a href="https://api.whatsapp.com/send?phone=50688895595;fbclid=IwAR06xfB_vLgsM5c09vN-oafDMr63UHFP64xqvvLalZJuj4wJVP_1f9Tyy5I">
+                            <img height="90px" width="90px" src="4-2-whatsapp-transparent.png"></img>
+                        </a>
+                        <a href="https://api.whatsapp.com/send?phone=50688895595;fbclid=IwAR06xfB_vLgsM5c09vN-oafDMr63UHFP64xqvvLalZJuj4wJVP_1f9Tyy5I">WhatsApp</a>
+                        <p>-</p>
+                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FCafeteriaMaquinaDeSuenos%2F;tabs=timeline;width=340;height=500;small_header=false;adapt_container_width=true;hide_cover=false;show_facepile=true;appId" width="340" height="500" style="border:none;overflow:hidden;position: absolute;left: 2%" scrolling="yes" frameborder="1" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d694.5810011888319!2d-84.11955953998819!3d10.0050042545715!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0fb8c2d4cef01%3A0x963a6a951e6a7cc6!2zQ2FmZXRlcsOtYSBNw6FxdWluYSBkZSBzdWXDsW9z!5e0!3m2!1sen!2scr!4v1619064810352!5m2!1sen!2scr"
+                                width="400" height="500" style="border:0;position: absolute; right: 2%" allowfullscreen="true" loading="lazy"></iframe>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--        Inicio de sesion-->
+        <div id="iniciarsesion" class="w3-modal">
+            <h:form id="loginForm">
+
+                <b:panel title="Inicio de sesion" showCollapseLink="false" 
+                         look="success" style-class="centrado" collapsible="false">
+                    <span onclick="document.getElementById('iniciarsesion').style.display =
+                                    'none'" class="w3-button w3-display-topright w3-large">&times;</span>
+                    <b:row tooltip="Digite su usuario">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputText placeholder="Usuario"
+                                     id="usuario"
+                                     required="true"
+                                     autocomplete="true"
+                                     value="#{usuarioController.idUsuario}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="user-circle"/>
+                            </f:facet>
+                        </b:inputText>
+                        <b:column medium-screen="1">
+                            <b:message for="usuario"/>
+                        </b:column>
+                    </b:row>
+                    <b:row tooltip="Digite su contraseña">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputSecret placeholder="Password"
+                                       id="password"
+                                       required="true"
+                                       autocomplete="true"
+                                       value="#{usuarioController.pwUsuario}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key"/>
+                            </f:facet>
+                        </b:inputSecret>
+                        <b:column medium-screen="1">
+                            <b:message for="password"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:commandButton value="Iniciar Sesion"
+                                         look="success"
+                                         style="width: 100%"
+                                         action="#{usuarioController.getUsuario()}"/>
+                        <b:column medium-screen="3">
+                            <p:captcha label="Check"/>
+                        </b:column>
+                    </b:row>
+                </b:panel>
+            </h:form>
+        </div>
+
+        <!--        Registrarse-->
+        <div id="register" class="w3-modal">
+            <h:form id="registerForm">
+                <b:panel title="Registrarse" showCollapseLink="false" look="success"
+                         style-class="centrado" collapsible="false">
+                    <span onclick="document.getElementById('register').style.display =
+                                    'none'" class="w3-button w3-display-topright w3-large">&times;</span>
+                    <!--id, idUsuario, pwUsuario, nombreUsuario, idRol=cliente, idRestaurante=1-->
+                    <b:row tooltip="nombreUsuario">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputText placeholder="Usuario"
+                                     id="usuario"
+                                     required="true"
+                                     autocomplete="true"
+                                     value="#{usuarioController.idUsuario}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="user-circle"/>
+                            </f:facet>
+                        </b:inputText>
+                        <b:column medium-screen="1">
+                            <b:message for="usuario"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row tooltip="Digite su contraseña">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputSecret placeholder="Password"
+                                       id="password"
+                                       required="true"
+                                       autocomplete="true"
+                                       value="#{usuarioController.pwUsuario}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key"/>
+                            </f:facet>
+                        </b:inputSecret>
+                        <b:column medium-screen="1">
+                            <b:message for="password"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row tooltip="Ingrese su nombre">
+                        <b:column medium-screen="1"/>
+                        <b:column medium-screen="10"/>
+                        <b:inputText placeholder="Nombre Completo"
+                                     id="nombre"
+                                     required="true"
+                                     autocomplete="true"
+                                     value="#{usuarioController.nombreUsuario}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="user-circle"/>
+                            </f:facet>
+                        </b:inputText>
+                        <b:column medium-screen="1">
+                            <b:message for="nombre"/>
+                        </b:column>
+                    </b:row>
+
+                    <b:row>
+                        <b:column medium-screen="3"/>
+                        <b:column medium-screen="10"/>
+                        <b:commandButton value="Registrarse"
+                                         look="success"
+                                         style="width: 100%"
+                                         action="#{usuarioController.insertar()}"/>
+                        <b:column medium-screen="5">
+                            <p:captcha label="Check"/>
+                        </b:column>
+                        <b:column medium-screen="20"/>
+                        <b:column medium-screen="20"/>
+                    </b:row>
+                        <b:column medium-screen="10"/>
+                        <b:column medium-screen="10"/>
+                    <b:row>
+                        
+                    </b:row>
+                </b:panel>
+            </h:form>
+        </div>
+    </h:body>
+</html>
