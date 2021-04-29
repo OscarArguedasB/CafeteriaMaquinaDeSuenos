@@ -81,6 +81,12 @@
                     <b:navLink style="display: " value="Editar datos" icon-awesome="" href=""/>
                 </b:dropMenu>
             </b:navbarLinks>
+            <b:navbarLinks rendered="#{usuarioController.idRol=='cliente'}">
+                <b:dropMenu value="Cliente" icon-awesome="profile" style="    color: #fff!important;
+                            background-color: #000!important; text-align: center; display: block;">
+                        <b:navLink value="Imprimir factura" icon-awesome="fa-newspaper-o" href="#{request.contextPath}/faces/certificacion/certificacion.xhtml"/>
+                </b:dropMenu>
+            </b:navbarLinks>
         </div>
 
         <div id="top" class="top">
