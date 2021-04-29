@@ -3,24 +3,23 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:b="http://bootsfaces.net/ui" 
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:b="http://bootsfaces.net/ui">
 
     <h:head>
-        <title> EditarSolicitudes</title>    
+        <title>Editar Personal</title>    
     </h:head>
     <h:body>
         <ui:composition template="./../resources/templates/plantilla.xhtml">
             <ui:define name="content">
-                <h:form id="editaSolicitudesForm">
-                    <b:container fluid="true">
-                        <b:panel title="Personal" look="danger" style="position: absolute">
+                <h:form id="editaPersonalForm">
+                    <b:container fluid="true" style="position: absolute">
+                        <b:panel title="Personal" look="danger" style="position: relative">
                             <b:row>
                                 <b:column medium-screen="2">
                                     <h:outputLabel value="idPersonal" for="idPersonal"/>
                                 </b:column>
                                 <b:column medium-screen="2">
-                                    <b:inputText placeholder="402560763"
+                                    <b:inputText placeholder="402500655"
                                                  required="true"
                                                  id="idPersonal"
                                                  value="#{personalController.idPersonal}"/>
@@ -34,7 +33,7 @@
                                     <h:outputLabel value="Nombre" for="nombre"/>
                                 </b:column>
                                 <b:column medium-screen="2">
-                                    <b:inputText placeholder="DENNIS"
+                                    <b:inputText placeholder="Nombre"
                                                  required="true"
                                                  id="nombre"
                                                  value="#{personalController.nombre}"/>
@@ -85,12 +84,12 @@
                                     <b:message for="fechaIngr"/>
                                 </b:column>
                             </b:row>
-                           <b:row>
+                            <b:row>
                                 <b:column medium-screen="2">
                                     <h:outputLabel value="Telefono" for="telefono"/>
                                 </b:column>
                                 <b:column medium-screen="2">
-                                    <b:inputText placeholder="87489653"
+                                    <b:inputText placeholder="88888888"
                                                  required="true"
                                                  id="telefono"
                                                  value="#{personalController.telefono}"/>
@@ -128,16 +127,21 @@
                                 </b:column>
                             </b:row>
                             <b:row>
-                                <b:column medium-screen="3">
-                                    <p:captcha label="Check"/>
-                                </b:column>
                                 <b:column medium-screen="2"/>
-                                    <b:commandButton value="Agregar"
-                                                     look="primary"
-                                                     action="#{personalController.insertar()}"
-                                                     style="width: 40%"
+                                <b:column medium-screen="4">
+                                    <b:commandButton value="Editar"
+                                                     look="success"
+                                                     action="#{personalController.modificar()}"
+                                                     style="width: 33%"
                                                      >
-                                    </b:commandButton>                            
+                                    </b:commandButton>
+                                    <b:commandButton value="Eliminar"
+                                                     look="danger"
+                                                     action="#{personalController.eliminar()}"
+                                                     style="width: 33%"
+                                                     >
+                                    </b:commandButton>
+                                </b:column>                                
                             </b:row>
                         </b:panel>
                     </b:container>

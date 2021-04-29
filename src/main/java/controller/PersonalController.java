@@ -37,7 +37,7 @@ public class PersonalController extends Personal implements Serializable {
             this.setTelefono(pe.getTelefono());
             this.setSalario(pe.getSalario());
             this.setIdRestaurante(pe.getIdRestaurante());
-            return "edita2.xhtml";
+            return "edita.xhtml";
         } else {
             FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
                     "El personal no existe");
